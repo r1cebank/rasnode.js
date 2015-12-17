@@ -1,0 +1,27 @@
+{
+  "name": "rasnode.js",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-git": "^1.6.0",
+    "gulp-util": "^3.0.7",
+    "gulp-yaml": "^1.0.1",
+    "js-yaml": "^3.4.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r1cebank/rasnode.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/r1cebank/rasnode.js/issues"
+  },
+  "homepage": "https://github.com/r1cebank/rasnode.js#readme"
+}

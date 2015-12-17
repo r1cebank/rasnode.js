@@ -1,0 +1,19 @@
+---
+##
+#   
+#
+#
+##
+# service information
+info:
+    name: imop-datasource
+    serves: lol.imop.services.datasource
+# package information
+package:
+    source: https://github.com/r1cebank/imop.git
+    start:
+      - node index.js
+    beforestart:
+      - ./script.sh
+links:
+    - lol.imop.services.mongodb
