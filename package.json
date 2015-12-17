@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "del": "^2.2.0",
     "gulp": "^3.9.0",
     "gulp-git": "^1.6.0",
+    "gulp-shell": "^0.5.1",
     "gulp-util": "^3.0.7",
     "gulp-yaml": "^1.0.1",
     "js-yaml": "^3.4.6"
