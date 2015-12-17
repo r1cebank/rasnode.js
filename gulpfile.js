@@ -26,8 +26,11 @@ gulp.task('yml2json', function() {
     gutil.log('node.yml parsed into node.json');
 });
 
-gulp.task('clone', ['config'], function() {
-    gutil.log(nodeinfo);
+gulp.task('clone', ['config'], function(callback) {
+    git.clone(nodeinfo.package.source, function(err) {
+        if (err) throw err;
+        callback();
+    });
 });
 
 gulp.task('install', ['clone'], function() {
