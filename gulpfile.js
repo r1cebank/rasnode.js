@@ -14,7 +14,7 @@ var fs              = require('fs');
 var nodeinfo = { };
 
 // This is the default task, this will run when the node boots up
-gulp.task('default', ['config', 'run']);
+gulp.task('default', ['config', 'start']);
 
 gulp.task('config', function() {
     nodeinfo = yaml.safeLoad(fs.readFileSync('./node.yml', 'utf8'));
@@ -43,9 +43,15 @@ gulp.task('clean', function() {
 
 gulp.task('provision', ['clone'], function() {
     return gulp.src('')
-    .pipe(shell(nodeinfo.provision, {cwd: './app'}));
+        .pipe(shell(nodeinfo.provision, {cwd: './app'}));
 });
 
-gulp.task('run', ['provision'], function() {
+gulp.task('start', ['provision', 'beforestart'], function() {
+    return gulp.src('')
+        .pipe(shell(nodeinfo.package.start, {cwd: './app'}));
+});
 
+gulp.task('beforestart', ['provision'], function() {
+    return gulp.src('')
+        .pipe(shell(nodeinfo.package.beforestart, {cwd: './app'}));
 });
