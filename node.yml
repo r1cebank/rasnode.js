@@ -1,22 +1,35 @@
 ---
 ##
-#   
+#
 #
 #
 ##
 # service information
 info:
+    # the name of the service
     name: imop
+    # the name of service it is serving, used for service discovery
     serves: lol.imop.services.imop
 # package information
 package:
-    source: https://github.com/r1cebank/imop.git
+    # type can be git, local, remotezip, remotefiles
+    type: remotezip
+    # source of the code, can be a link for download, a folder or a git url
+    source:
+        # base is only required if you have a remotexxx type
+        base: https://github.com/r1cebank/yaas/archive/
+        files:
+            - v1.0.0.zip
+    # if working dir is different, use this to specify so the before start and
+    # start commands can run correctly
+    workingdir: yaas-1.0.0
+    # the commands for starting the application
     start:
       - npm start
     beforestart:
       - npm install
 # provision information
 provision:
-    - touch hello
+    - ls
 links:
     - lol.imop.services.mongodb
