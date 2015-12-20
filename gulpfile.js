@@ -65,18 +65,22 @@ gulp.task('clean', function() {
 });
 
 gulp.task('provision', ['clone'], function() {
-    if(nodeinfo.provoion) {
+    if(nodeinfo.provision) {
         return gulp.src('')
             .pipe(shell(nodeinfo.provision, {cwd: './app'}));
     }
 });
 
 gulp.task('start', ['provision', 'beforestart'], function() {
-    return gulp.src('')
-        .pipe(shell(nodeinfo.package.start, {cwd: path.join('./app', nodeinfo.package.workingdir || '')}));
+    if(nodeinfo.package.start) {
+        return gulp.src('')
+            .pipe(shell(nodeinfo.package.start, {cwd: path.join('./app', nodeinfo.package.workingdir || '')}));
+    }
 });
 
 gulp.task('beforestart', ['provision'], function() {
-    return gulp.src('')
-        .pipe(shell(nodeinfo.package.beforestart, {cwd: path.join('./app', nodeinfo.package.workingdir || '')}));
+    if(nodeinfo.package.beforestart) {
+        return gulp.src('')
+            .pipe(shell(nodeinfo.package.beforestart, {cwd: path.join('./app', nodeinfo.package.workingdir || '')}));
+    }
 });

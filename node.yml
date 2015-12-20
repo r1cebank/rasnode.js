@@ -30,6 +30,5 @@ package:
       - npm install
 # provision information
 provision:
-    - ls
 links:
     - lol.imop.services.mongodb
