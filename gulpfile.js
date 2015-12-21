@@ -32,6 +32,8 @@ gulp.task('yml2json', function() {
     gutil.log('node.yml parsed into node.json');
 });
 
+//  If git exists should start pull
+
 gulp.task('clone', ['yml2json'], function(callback) {
 
     //  We are cloning the product into the
@@ -74,7 +76,8 @@ gulp.task('provision', ['clone'], function() {
 gulp.task('start', ['provision', 'beforestart'], function() {
     if(nodeinfo.package.start) {
         return gulp.src('')
-            .pipe(shell(nodeinfo.package.start, {cwd: path.join('./app', nodeinfo.package.workingdir || '')}));
+            .pipe(shell(["pm2 delete " + nodeinfo.info.name,  "pm2 start " + nodeinfo.package.start + " -i 4 --name " + nodeinfo.info.name],
+                {cwd: path.join('./app', nodeinfo.package.workingdir || ''), ignoreErrors: true}));
     }
 });
 
